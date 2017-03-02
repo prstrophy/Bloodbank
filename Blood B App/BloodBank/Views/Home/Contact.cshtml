@@ -1,0 +1,49 @@
+﻿<div class="container">
+    @{
+        ViewBag.Title = "Contact";
+    }
+    <h2>@ViewBag.Title.</h2>
+    <h3>@ViewBag.Message</h3>
+
+    <address style="font-size:15px">
+        The British College<br />
+        Thapathali, Kathmandu<br />
+        <abbr title="Phone">P:  9860316108</abbr>
+
+    </address>
+
+    <h8>About</h8> <p style="font-size:17px;background-color:white;">
+
+        'Blood Bank' is the product resulted out of the community welfare initiative called 'People Project' from QFC Group. Universally, 'Blood' is recognized as the most precious element that sustains life.
+        It saves innumerable lives across the world in a variety of conditions. Once in every 2- seconds, someone, somewhere is desperately in need of blood. More than 29 million units of blood components are transfused every year.
+        The need for blood is great - on any given day, approximately 39,000 units of Red Blood Cells are needed. Each year, we could meet only up to 1% (approx) of our nation’s demand for blood transfusion.
+        Despite the increase in the number of donors, blood remains in short supply during emergencies, mainly attributed to the lack of information and accessibility. We positively believe this tool can overcome most of these challenges by effectively connecting the blood donors with the blood recipients.
+    </p>
+    <address>
+        <strong>Support:</strong>   <a href="mailto:stropher@gmail.com">stropher@gmail.com</a><br />
+
+    </address>
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBSzPCh1-3a-GnvNHUX_phKKcNILglQ-Sk"></script>
+    <script type="text/javascript">
+
+    $(document).ready(function () {
+        initialize();
+    });
+    function initialize() {
+        var mapOptions = {
+            center: new google.maps.LatLng(27.691973, 85.319532),
+            zoom: 10,
+            mapTypeId: google.maps.MapTypeId.ROADMAP
+        };
+        var map = new google.maps.Map(document.getElementById("map_canvas"),
+            mapOptions);
+        // create a marker
+        var latlng = new google.maps.LatLng(27.691973, 85.319532);
+        var marker = new google.maps.Marker({
+            position: latlng,
+            map: map,
+            title: 'My Place'
+        });
+    }
+    </script>  
+</div>

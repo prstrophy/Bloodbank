@@ -1,0 +1,95 @@
+﻿
+.navbar-inverse {
+    background-color: rgba(58, 10, 23, 0.73);
+    border-color: #900202;
+    padding: 5px 0px 5px 0px;
+}
+    .navbar-inverse .navbar-nav > .active > a {
+        background-color: rgba(95, 69, 69, 0);
+    }
+    .navbar-inverse .navbar-nav > li > a:hover {
+        background-color: rgba(109, 52, 52, 0.84);
+    }
+    .navbar-inverse .navbar-nav > .active > a:hover {
+        background-color: rgba(109, 52, 52, 0.84);
+    }
+body {
+    background-image: url(../../Content/images/bgr.jpg);
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    font-family: 'Inknut Antiqua', serif;
+}
+.Scroll {
+    scrollbar-face-color: #367CD2;
+    scrollbar-shadow-color: #FFFFFF;
+    scrollbar-highlight-color: #FFFFFF;
+    scrollbar-3dlight-color: #FFFFFF;
+    scrollbar-darkshadow-color: #FFFFFF;
+    scrollbar-track-color: #FFFFFF;
+    scrollbar-arrow-color: #FFFFFF;
+    
+}
+.Scroll::-webkit-scrollbar {
+    width: 12px;
+}
+
+/* Track */
+.Scroll::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+}
+
+/* Handle */
+.Scroll::-webkit-scrollbar-thumb {
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+    background: rgba(255,0,0,0.8);
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5);
+}
+.form-control {
+    
+    height: 48px
+}
+    .jum body {
+    padding-top: 10px;
+    padding-bottom: 20px;
+    font-family: 'Inknut Antiqua', serif;
+}
+a {
+    color: darkred;
+}
+.jumbotron.box {
+    margin-bottom: -10px;
+}
+
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Override the default bootstrap behavior where horizontal description lists 
+   will truncate terms that are too long to fit in the left column 
+*/
+.dl-horizontal dt {
+    white-space: normal;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    max-width: 280px;
+}
+
+.searchBox {
+    background-color: rgba(119, 6, 6, 0.05);
+  
+    width: 85%;
+    margin-left: 7.5%;
+}
+.carousel-inner{
+    max-height:480px;
+    
+}

@@ -1,0 +1,96 @@
+﻿ @{var uType = Context.Request.Cookies["UserType"]; }
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title Blood Bank Application</title>
+    @Styles.Render("~/Content/css")
+
+    @Scripts.Render("~/bundles/modernizr")
+
+    @Scripts.Render("~/bundles/jquery")
+    <link href="https://fonts.googleapis.com/css?family=Inknut+Antiqua" rel="stylesheet">
+</head>
+<body>
+
+    @*Logo and login box*@
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <img src="~/Content/images/logo.png" height="109" />
+                <h2 style="margin-left:100px;margin-top:-60px; font-family: 'Inknut Antiqua', serif;"><b>Blood Bank</b></h2>
+                <h5 style="margin-left:100px;margin-top:-10px; font-family: 'Inknut Antiqua', serif;"><i><b>Donate Blood , Save Life</b></i></h5>
+
+
+            </div>
+
+            <div class="col-md-8">
+                <div style="margin-top:30px;margin-right:30%;float:right;">
+                    @Html.Partial("_LoginPartial")
+                </div>
+            </div>
+        </div>
+    </div>
+    @*navigation bar start*@
+    <div class="navbar-wrapper" style="margin-top:30px;">
+        <div class="container">
+            <nav class="navbar navbar-inverse navbar-static-top">
+                <div class="container">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                    </div>
+                    <div id="navbar" class="navbar-collapse collapse">
+                        <ul class="nav navbar-nav">
+                            <li class="active"><a href="../Home/Index" style="color:white;">Home</a></li>
+                            <li><a href="../Home/SearchPg" style="color:white;">Search Blood-Group</a></li>
+                             <li><a href="../BloodRequests/Index" style="color:white;">Request Blood</a></li>
+                          
+
+                         
+                        </ul>
+                        <ul class="nav navbar-nav navbar-right">
+
+                          @if (uType != null)
+                            {
+                                if (uType.Value == "Admin")
+                                {
+                                    <li style="color:white;" id="adminPanel">@Html.ActionLink("Admin Panel", "AdminPanel", "Home")</li>
+                                }
+
+                                else
+                                {
+
+                                }
+                            }
+
+                        </ul>
+
+                    </div>
+                </div>
+            </nav>
+
+        </div>
+    </div>
+    @*navigation bar end*@
+    <div class="container-fluid">
+        @RenderBody()
+
+
+        <footer style="    background-color: #000000;color: white;bottom:0px;position:fixed;width:100%;height:20px;">
+            <p class="pull-right"><a href="#"> &middot; Back to top</a></p>
+            <p> &copy; 2017 Blood Bank Application &middot; <a href="~/Home/Contact"> Info</a>  <a class="pull-right"href="#">  &middot; Terms</a> <a class="pull-right" href="#">  Privacy</a></p>
+        </footer>
+
+    </div>
+
+    
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

@@ -1,0 +1,235 @@
+﻿@model BloodBank.Models.BloodRequestViewModel
+@{
+    var username = Context.Request.Cookies["Email"];
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<
+    <div class="jumbotron searchBox" style="margin-top:-20px;border-top:solid;border-bottom:solid;border-color:rgba(117, 2, 2, 0.5);">
+
+        <div class="row" style="margin-top:25px;margin-bottom:25px;margin-left:60px;">
+            <div class="col-md-12">
+                <img src="~/Content/images/banner.png" alt="" height="200" width="800">
+            </div>
+            <div class="col-md-12">
+                <div class="col-md-4">
+
+                    <label>Blood Requests</label>
+                    <div class="Scroll" style="font-size:small;overflow-y:scroll;max-height: 400px;height:100%;">
+                        @foreach (var item in Model.ListBloodRequest)
+                        {
+
+                            <span class="glyphicon glyphicon-user" style="color:#d6351e"></span><span>   <b>@item.PatientName</b></span><span style="float:right"><b>@item.BloodGroup</b></span> <br />
+
+
+                            <span class="glyphicon glyphicon-map-marker" style="color:#d6351e"></span>   <span>@item.Hospital_Address</span> <br />
+                            <span class="glyphicon glyphicon-phone" style="color:#d6351e"></span><b>@item.ContactNumber</b>  <button class="btn btn-primary a" data-toggle="modal" data-target="#myModal" id="@item.Id" style="max-width:150px;width:100%;height:30px;float:right">Send Message</button>                            <br />
+
+                            <span class="glyphicon glyphicon-user" style="color:#d6351e"></span><span>Contact name: @item.ContactName</span>  <button class="btn btn-primary b" id="@item.Id" style="max-width:150px;width:100%;height:30px;">View Details</button>
+
+                                    <hr />
+                        }
+
+                    </div>
+                </div>
+                <div id="myModal" class="modal fade" role="dialog">
+                    <div class="modal-dialog">
+
+                        <!-- Modal content-->
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                <h4 class="modal-title">Send Message</h4>
+                            </div>
+                            <div class="modal-body">
+                                <textarea id="messageBody" cols="5" style="width:100%;height:500%"> </textarea>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-primary a" id="btnSend">Send Message</button>
+                                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="col-md-2"> </div>
+
+                <div class=" col-md-12">
+                    <div class="col-md-4">
+                       
+                            <label >Blood Donors</label><br />
+
+                        <div class="Scroll" style="font-size:small;overflow-y:scroll;max-height: 400px;height:100%;">
+                            @foreach (var item in Model.ListUsers.Where(x => x.UserType == "Donor").OrderByDescending(x => x.Id))
+                            {
+
+                                <span class="glyphicon glyphicon-user" style="color:#d6351e"></span><span>   <b>@item.FirstName</b></span>
+                                <b style="float:right;color:powderblue;font-size:large">@item.BloodGroup.Description</b> <br />
+
+                                <span class="glyphicon glyphicon-phone-alt" style="color:#d6351e"></span>   <span>@item.Number</span><br />
+                                <span class="glyphicon glyphicon-comment" style="color:#d6351e"></span>   <span>@item.Email</span><br />
+
+                                <span class="glyphicon glyphicon-map-marker" style="color:#d6351e;"></span><b>@item.District.Description</b>
+
+                                <b>@item.City.Description</b> <br />
+
+
+
+
+
+                                <hr />
+                            }
+                        </div>
+
+                    </div>
+              
+
+                    
+                </div>
+
+
+            </div>
+        </div>
+        <p style="font-size:14px;">
+            Wanna be a Donor @Html.ActionLink("Register", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink", style = "color:#3598af" })
+            Already a Donor @Html.ActionLink("Log in", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink", style = "color:#3598af" })
+
+
+        </p>
+        
+       
+    </div>
+<div style="margin-top:-30px;height:-20px;">
+    <div class="jumbotron" style="background-color: rgba(5, 95, 113, 0.10);">
+        <div class="row" style="margin-top:-30px;">
+
+            <div class="col-md-6">
+
+                <div id="myCarousel" class="carousel slide" data-ride="carousel">
+                    <!-- Indicators -->
+                    <ol class="carousel-indicators">
+                        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                        <li data-target="#myCarousel" data-slide-to="1"></li>
+                        <li data-target="#myCarousel" data-slide-to="2"></li>
+                        <li data-target="#myCarousel" data-slide-to="3"></li>
+                    </ol>
+
+                    <!-- Wrapper for slides -->
+                    <div class="carousel-inner">
+                        <div class="item active">
+                            <img src="~/Content/cimg/1a.png" alt="" height="200">
+                        </div>
+
+                        <div class="item">
+                            <img src="~/Content/cimg/2.png" alt="" height="200">
+                        </div>
+
+                        <div class="item">
+                            <img src="~/Content/cimg/3.jpg" alt="" height="200">
+                        </div>
+                        <div class="item">
+                            <img src="~/Content/cimg/4a.jpg" alt="" height="200">
+                        </div>
+                    </div>
+
+                    <!-- Left and right controls -->
+                    <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+                        <span class="glyphicon glyphicon-chevron-left"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="right carousel-control" href="#myCarousel" data-slide="next">
+                        <span class="glyphicon glyphicon-chevron-right"></span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </div>
+
+            </div>
+            <div class="col-md-1"> </div>
+
+            <div class="col-md-4">
+                <div class="jumbotron box" style="float:right;padding:0px;">
+                    <img src="https://www.bloodbankindia.net/bbi_theme/images/ico-1.png">
+                    <label>Blood Donate Tips</label>
+                    <div class="tipsSubDiv">
+                        <h3><b>Do Not Donate,</b></h3>
+                        <hr />
+
+                        <h4><b>If you have any of the following conditions</b></h4>
+
+                        <ul style="font-size:large">
+                            <li>Cold / fever in the past 1 week.</li>
+                            <li>Under treatment with antibiotics or any other medication.</li>
+                            <li>Major surgery in the last 6 months.</li>
+
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+
+<style>
+    .box {
+        height: 440px;
+        width: 480px;
+        background-color: #ef7d7d;
+    }
+
+
+    hr {
+        display: block;
+        height: 1px;
+        border: 0;
+        border-top: 1px solid #ccc;
+        margin: 1em 0;
+        padding: 0;
+    }
+</style>
+<script>
+    var id = 0;
+    $(".a").on('click', function () {
+        a = $(this).attr("id");
+    });
+
+    $("#btnSend").on('click', function () {
+        var message = $("#messageBody").val();
+        var userId = a;
+        debugger;
+        $.ajax({
+            url: '../Users/SendMessage',
+            type: 'POST',
+            dataType: 'json',
+            contentType: 'application/json',
+            data: JSON.stringify({ message: message, userId: userId }),
+            success: function (data) {
+                if (data == "1") {
+                    alert("Success!!");
+
+                } else {
+                    alert("Failed!Please Try Again!!");
+                }
+            }
+        });
+    });
+
+    $(".b").on('click', function () {
+         var a = '@username';
+
+        if (a !=  '') {
+        var userid = $(this).attr("id");
+        var id = Number(userid);
+        var url = '../BloodRequests/Details?id=' + id;
+        window.location.href = url;
+        } else {
+            alert("You must login to see donor details");
+        }
+    });
+</script>
+
+

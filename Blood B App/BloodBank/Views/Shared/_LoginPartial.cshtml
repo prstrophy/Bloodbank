@@ -1,0 +1,37 @@
+﻿@{ var username = Context.Request.Cookies["Email"];}
+<style>
+    a {
+        color: darkseagreen;
+    }
+</style>
+@using Microsoft.AspNet.Identity
+
+@if (username != null)
+{
+    using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="c" style="margin-top:20px;height:50px;padding:15px;">
+
+            <label> @Html.ActionLink("Hello, "+ username.Value + User.Identity.GetUserName() + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })</label>
+
+            <a href="javascript:document.getElementById('logoutForm').submit()">LogOut </a> <br />
+
+            
+                <a href="../Home/MyProfile" style="color:darkred;">Profile</a> 
+                               
+
+          
+        </div>
+    }
+}
+else
+{
+   
+}
+
+<script>
+    debugger;
+    var a = '@username';
+</script>
