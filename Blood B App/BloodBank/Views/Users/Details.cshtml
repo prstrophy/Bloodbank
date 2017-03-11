@@ -1,0 +1,109 @@
+﻿@model BloodBank.Models.Users
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container">
+    <h2>Donor Details</h2>
+
+    <div>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.FirstName)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.FirstName) <br />
+            </dd>
+           
+            <dt>
+                @Html.DisplayNameFor(model => model.LastName) 
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.LastName) <br />
+            </dd>
+            
+            <dt>
+                @Html.DisplayNameFor(model => model.Email)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Email) <br />
+            </dd>
+           
+            <dt>
+                <label>District</label>
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.District.Description) <br />
+            </dd>
+            
+            <dt>
+                <label>City</label>
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.City.Description) <br />
+            </dd>
+            
+            <dt>
+                <label>Blood Group</label>
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.BloodGroup.Description) <br />
+            </dd>
+            
+            <dt>
+                @Html.DisplayNameFor(model => model.Address)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Address) <br />
+            </dd>
+
+            
+            <dt>
+                @Html.DisplayNameFor(model => model.Gender)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Gender) <br />
+            </dd>
+           
+         
+
+          
+            <dt>
+                @Html.DisplayNameFor(model => model.Age)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Age) <br />
+            </dd>
+           
+            <dt>
+                @Html.DisplayNameFor(model => model.Number)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Number) <br />
+            </dd>
+           
+            <dt>
+                @Html.DisplayNameFor(model => model.UserType)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.UserType)
+            </dd>
+
+        </dl>
+    </div>
+  
+</div>

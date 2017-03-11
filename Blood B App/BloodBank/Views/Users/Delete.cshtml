@@ -1,0 +1,140 @@
+﻿@model BloodBank.Models.Users
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="container">
+    <h2>Delete</h2>
+
+    <h3>Are you sure you want to delete this?</h3>
+    <div>
+        <h4>Users</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.FirstName)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.FirstName)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.LastName)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.LastName)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Email)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Email)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.DistrictId)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.DistrictId)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.CityId)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.CityId)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.BloodGroupId)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.BloodGroupId)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Address)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Address)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.EmailConfirmed)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.EmailConfirmed)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Gender)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Gender)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.EmailConfirmationCode)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.EmailConfirmationCode)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Password)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Password)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Age)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Age)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Number)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Number)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.UserType)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.UserType)
+            </dd>
+
+        </dl>
+
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-actions no-color">
+                <input type="submit" value="Delete" class="btn btn-default" /> |
+                @Html.ActionLink("Back to List", "Index")
+            </div>
+        }
+    </div>
+
+</div>
