@@ -1,0 +1,88 @@
+﻿@model BloodBank.Models.BloodRequest
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<div class="container">
+    <h2>Blood Request Details</h2>
+
+    <div>
+
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.PatientName)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.PatientName)
+            </dd>
+            <br />
+            <dt>
+                @Html.DisplayNameFor(model => model.BloodGroup)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.BloodGroup)
+            </dd>
+            <br />
+            <dt>
+                @Html.DisplayNameFor(model => model.Location)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Location)
+            </dd>
+            <br />
+            <dt>
+                @Html.DisplayNameFor(model => model.Hospital_Name)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Hospital_Name)
+            </dd>
+            <br />
+            <dt>
+                @Html.DisplayNameFor(model => model.Hospital_Address)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Hospital_Address)
+            </dd>
+            <br />
+            <dt>
+                @Html.DisplayNameFor(model => model.ContactName)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.ContactName)
+            </dd>
+            <br />
+            <dt>
+                @Html.DisplayNameFor(model => model.EmailId)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.EmailId)
+            </dd>
+            <br />
+            <dt>
+                @Html.DisplayNameFor(model => model.ContactNumber)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.ContactNumber)
+            </dd>
+            <br />
+            <dt>
+                @Html.DisplayNameFor(model => model.RequiredDate)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.RequiredDate)
+            </dd>
+
+        </dl>
+    </div>
+</div>

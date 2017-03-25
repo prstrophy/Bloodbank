@@ -1,0 +1,156 @@
+﻿@model BloodBank.Models.BloodRequestViewModel
+
+<style>
+    body {
+        margin-bottom: 50px;
+    }
+
+    .borderWrapper {
+        box-sizing: border-box;
+        border: solid 1px;
+        border-color: #cccccc;
+        padding: 20px;
+        padding-top: 35px;
+        padding-bottom: 35px;
+        background-color: #e5e5e5;
+        margin-bottom: 20px;
+    }
+
+    .heading {
+        display: inline-block;
+        background-color: white;
+        padding: 0 15px;
+        position: relative;
+        top: -45px;
+        left: 15px;
+        text-transform: uppercase;
+        font-size: 14px;
+        color: #d6351e;
+    }
+
+    hr {
+        background-color: dimgrey !important;
+        color: dimgrey !important;
+        border: solid 0.5px dimgrey !important;
+        height: 0.5px !important;
+    }
+</style>
+
+<div class="container body-content">
+    <h3><b>Request Blood</b></h3>
+    <div class="row" style="margin-top:15px;">
+        <div class="col-md-8 borderWrapper">
+            <div class="col-md-12">
+                <div class="col-md-6 ">
+                    <label class="heading" style="background-color:white;">PATIENT DETAILS</label>
+                    <h5 style="margin-top:-15px;">Patient Name *</h5>
+                    <input type="text" id="patientName" class="form-control" />
+
+                    <h5>Blood Group *</h5>
+                    @Html.DropDownList("bloodGroup", null, new { @class = "form-control" })
+                </div>
+                <div class="col-md-6 ">
+                    <h5>Location *</h5>
+                    <input type="text" id="location" class="form-control" />
+
+                    <h5>Hospital Name *</h5>
+                    <input type="text" id="hospitalName" class="form-control" />
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6" style="margin-left:30px;">
+                    <h5>Hospital Address *</h5>
+                    <input type="text" id="hospitalAddress" class="form-control" />
+                </div>
+            </div>
+
+        </div>
+     
+    </div>
+    <div class="row" style="margin-top:25px;">
+        <div class="col-md-8 borderWrapper" style="height:279px;">
+            <div class="row">
+                <div class="col-md-6 ">
+                    <label class="heading" style="background-color:white;">CONTACT DETAILS</label>
+                    <h5 style="margin-top:-16px;">Contact Name *</h5>
+                    <input type="text" id="contactName" class="form-control" />
+
+                    <h5>Contact Number *</h5>
+                    <input type="text" id="contactNumber" class="form-control" />
+                </div>
+                <div class="col-md-6 ">
+                    <h5>Email Id</h5>
+                    <input type="text" id="emailId" class="form-control" />
+
+                    <h5>Required Date *</h5>
+                    <input type="text" id="requiredDate" class="form-control" value="DD/MM/YYYY" />
+                </div>
+            </div>
+        </div>
+       
+
+    </div>
+    <div class="row" style="margin-top:25px;">
+        <div class="col-md-8 borderWrapper" style="height:20px;">
+
+            <button class="btn btn-primary" id="btnSave" style="margin-left:40%;margin-top:-25px;height:50px;">Submit Request</button>
+
+        </div>
+        <div class="col-md-4">
+
+        </div>
+
+    </div>
+
+</div>
+
+
+
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+
+<script>
+      $("#btnSave").on('click', function (){
+        var patientName     = $("#patientName").val();
+        var bloodGroup      = $("#bloodGroup").val();
+        var location        = $("#location").val();
+        var hospitalName    = $("#hospitalName").val();
+        var hospitalAddress = $("#hospitalAddress").val();
+        var contactName     = $("#contactName").val();
+        var emailId         = $("#emailId").val();
+        var contactNumber   = $("#contactNumber").val();
+        var requiredDate    = $("#requiredDate").val();
+        debugger;
+        $.ajax({
+            url: '../BloodRequests/SaveBloodRequest',
+            type:'POST',
+            dataType: 'JSON',
+            contentType: 'application/json',
+            data: JSON.stringify({
+                patientName     : patientName  ,
+                bloodGroup      : bloodGroup   ,
+                location        : location     ,
+                hospitalName    : hospitalName ,
+                hospitalAddress : hospitalAddress ,
+                contactName     : contactName  ,
+                emailId         : emailId      ,
+                contactNumber   : contactNumber,
+                requiredDate: requiredDate
+
+            }),
+            success: function (data) {
+                debugger;
+                if (data == "1") {
+                    alert("Blood Request Sent");
+                } else {
+                    alert("Unable to Save");
+                }
+            }
+
+        });
+      });
+
+</script>
