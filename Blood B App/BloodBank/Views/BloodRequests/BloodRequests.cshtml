@@ -1,0 +1,100 @@
+﻿@model IEnumerable<BloodBank.Models.BloodRequest>
+@{ var username = Context.Request.Cookies["Email"];}
+
+<div class="container">
+    <h4><b>Blood Requests</b></h4>
+
+    <div class="row">
+        @foreach (var item in Model)
+        {
+            <div class="col-md-6" style="margin-bottom:40px;">
+                <div class="borderBox">
+                    <article>
+                        <b><span class="glyphicon glyphicon-user"></span></b>&nbsp; <b>@item.PatientName</b>
+                        <b><span style="float:right;color:#e95623">@item.BloodGroup</span></b>
+                    </article><br />
+                    <article><b><span style="font-size:18px;" class="glyphicon glyphicon-map-marker"></span></b> @item.Hospital_Address</article>
+                    <br />
+
+                    <article><b><span style="font-size:18px;" class="glyphicon glyphicon-phone-alt"></span></b> @item.ContactNumber</article>
+                    <br />
+
+                    <span style="font-size:18px;" class="glyphicon glyphicon-calendar"></span><b style="font-size:14px;">Requested date:@item.RequiredDate</b>
+                    <hr />
+                    <div class="row" style="margin-top:10px;">
+                        <div class="col-md-6">
+                        
+                        </div>
+                        <div class="col-md-6">
+                            <button class="btn btn-primary b" id="@item.Id" style="width:100%;height:50px;">View Details</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+
+    </div>
+
+</div>
+
+<div id="myModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Send Message</h4>
+            </div>
+            <div class="modal-body">
+                <textarea id="messageBody" cols="5" style="width:100%;height:500%"> </textarea>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" id="btnSend">Send Message</button>
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<script>
+    var id = 0;
+    $(".a").on('click', function () {
+        a = $(this).attr("id");
+    });
+
+    $("#btnSend").on('click', function () {
+        var message = $("#messageBody").val();
+        var userId = a;
+        debugger;
+        $.ajax({
+            url: '../Users/SendMessage',
+            type: 'POST',
+            dataType: 'json',
+            contentType: 'application/json',
+            data: JSON.stringify({ message: message, userId: userId }),
+            success: function (data) {
+                if (data == "1") {
+                    alert("Success!!");
+
+                } else {
+                    alert("Failed!Please Try Again!!");
+                }
+            }
+        });
+    });
+
+    $(".b").on('click', function () {
+         var a = '@username';
+
+        if (a !=  '') {
+        var userid = $(this).attr("id");
+        var id = Number(userid);
+        var url = '../BloodRequests/Details?id=' + id;
+        window.location.href = url;
+        } else {
+            alert("You must login to see donor details");
+        }
+    });
+</script>
