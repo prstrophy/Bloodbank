@@ -1,0 +1,205 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@model BloodBank.Models.Users
+
+@{
+    ViewBag.Title = "MyProfile";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container">
+    <ul class="nav nav-tabs portalTabs">
+        <li class="active"><a data-toggle="tab" href="#home" style="color:black;">My Profile</a></li>
+
+    </ul>
+
+
+
+    <div class="tab-content" style="margin-bottom:30%;">
+        <div id="home" class="tab-pane fade in active">
+            <br />
+            <dl class="dl-horizontal">
+                <dt>
+                    @Html.DisplayNameFor(model => model.FirstName)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.FirstName)
+                </dd>
+                <br />
+                <dt>
+                    @Html.DisplayNameFor(model => model.LastName)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.LastName)
+                </dd>
+                <br />
+                <dt>
+                    @Html.DisplayNameFor(model => model.Email)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Email)
+                </dd>
+                <br />
+                <dt>
+                    @Html.DisplayNameFor(model => model.DistrictId)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.DistrictId)
+                </dd>
+                <br />
+                <dt>
+                    @Html.DisplayNameFor(model => model.CityId)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.CityId)
+                </dd>
+                <br />
+                <dt>
+                    @Html.DisplayNameFor(model => model.BloodGroupId)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.BloodGroupId)
+                </dd>
+                <br />
+                <dt>
+                    @Html.DisplayNameFor(model => model.Address)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Address)
+                </dd>
+
+                <br />
+                <dt>
+                    @Html.DisplayNameFor(model => model.Gender)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Gender)
+                </dd>
+                <br />
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.Password)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Password)
+                </dd>
+                <br />
+                <dt>
+                    @Html.DisplayNameFor(model => model.Age)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Age)
+                </dd>
+                <br />
+                <dt>
+                    @Html.DisplayNameFor(model => model.Number)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Number)
+                </dd>
+                <br />
+                <dt>
+                    @Html.DisplayNameFor(model => model.UserType)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.UserType)
+                </dd>
+
+            </dl>
+            <button class="btn btn-primary" style="width:25%;" data-toggle="modal" data-target="#myModal">Update Profile</button>
+            <button class="btn btn-primary" style="width:25%;"> <a href="../Messages/Index" style="color:white;"> Messages</a></button>
+        </div>
+
+
+
+    </div>
+</div>
+<div id="myModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title"><b>Update Profile</b></h4>
+            </div>
+            <div class="modal-body">
+                <label>First Name</label>
+                <input type="text" class="form-control" id="firstName" />
+                <br />
+                <label>Last Name</label>
+                <input type="text" class="form-control" id="lastName" />
+                <br />
+                <label>Email</label>
+                <input type="email" class="form-control" id="email" />
+                <br />
+                <label>Password</label>
+                <input type="password" class="form-control" id="password" />
+
+                <label>Age</label>
+                <input type="text" class="form-control" id="age" />
+
+                <label>Number</label>
+                <input type="text" class="form-control" id="number" />
+
+                <label>Gender</label>
+                <input type="text" class="form-control" id="gender" />
+
+                <label>Address</label>
+                <input type="text" class="form-control" id="address" />
+             
+
+                
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" id="btnUpdate" class="btn btn-success">Update</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<script>
+    $("#btnUpdate").on('click', function () {
+        var firstName = $("#firstName").val();
+        var lastName = $("#lastName").val();
+        var email = $("#email").val();
+        var password = $("#password").val();
+        var age = $("#age").val();
+        var number = $("#number").val();
+        var gender = $("#gender").val();
+        var address = $("#address").val();
+
+        $.ajax({
+            url: 'UpdateProfile',
+            type: 'POST',
+            dataType: 'json',
+            contentType: 'application/json',
+            data: JSON.stringify({ firstName: firstName, lastName: lastName, email: email, password: password, age: age, number: number, gender: gender, address: address }),
+            success: function (data) {
+                if (data == "1") {
+                    alert("Success!!");
+
+                } else {
+                    alert("Failed!Please Try Again!!");
+                }
+            }
+        });
+    });
+
+</script>
