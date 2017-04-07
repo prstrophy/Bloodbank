@@ -1,0 +1,70 @@
+﻿@model BloodBank.Models.BloodRequestViewModel
+<div class="container">
+    @{
+        ViewBag.Title = "Search Page";
+    }
+  
+    <h2>@ViewBag.Title</h2>
+    <div class="row">
+
+        <div class="col-md-12">
+            <h8><b>Blood Group</b></h8>
+            @Html.DropDownList("bloodGroup", null, new { @class = "form-control" })
+        </div>
+
+        <div class="col-md-12"> <br /></div>
+        <div class="col-md-12">
+            <h8><b>City</b></h8>
+            @Html.DropDownList("City", null, new { @class = "form-control" })
+            <div class="form-group">
+
+            </div>
+        </div>
+         <br />
+        <br />
+        <div class="col-md-12">
+            <button class="btn btn-primary" style="margin-top:34px;" id="btnSearch">Search</button>
+        </div>
+    </div>
+</div>
+
+    <script>
+        $("#btnSearch").on('click', function () {
+            var bloodGroup = $("#bloodGroup").val();
+            var city = $("#City").val();
+            debugger;
+            @*$.ajax({
+                type: 'POST',
+                url: '@Url.Action("Search", "Home")',
+                dataType: 'json',
+                data: JSON.stringify({ bloodGroup: bloodGroup, city: city }),
+                contentType: 'application/json',
+                success: function (searchResults) {
+                    if (searchResults == "0") {
+                        alert("No Data Found");
+                    } else {
+                        var results = []
+                        $(searchResults).each(function (index, value) {
+                            var firstName = value.FirstName;
+                            var lastName = value.LastName;
+                            var districtId = value.DistrictId;
+                            var bloodGroupId = value.BloodGroupId;
+
+                            results.push({
+                                FirstName: firstName,
+                                LastName: lastName,
+                                DistrictId: districtId,
+                                BloodGroupId: bloodGroupId
+                            });
+                        });
+                        results = JSON.stringify({ results });
+
+                        window.location.href = '../Home/SearchResults?Results=' + results + '';
+                    }
+                }
+            });*@
+        var url = '../Home/Search?bloodGroup=' + bloodGroup + '&city=' + city + ' ';
+            window.location.href = url;
+        });
+
+</script>
