@@ -1,0 +1,31 @@
+﻿@{ var username = Context.Request.Cookies["Email"];}
+
+@model IEnumerable<BloodBank.Models.Users>
+@{
+    ViewBag.Title = "Search";
+}
+<div class="container">
+
+    <div class="alert alert-info" style="color:black;font-size:large;">Search Results : @Model.Count() Result Found</div>
+
+    @foreach (var item in Model)
+    {
+        <div class="col-md-6" style="margin-bottom:40px;">
+            <div class="borderBox">
+                <article>
+                    <b><span class="glyphicon glyphicon-user"></span></b>&nbsp; <b>  @item.FirstName @item.LastName</b>
+                    <b><span style="float:right;color:#e95623;font-size:larger">@item.BloodGroup.Description</span></b>
+                </article><br />
+                <article><b><span style="font-size:18px;" class="glyphicon glyphicon-map-marker"></span></b>  @item.District.Description, @item.City.Description</article>
+                <br />
+                <article><b><span style="font-size:18px;" class="glyphicon glyphicon-phone-alt"></span></b>  @item.Number</article>
+                <br />
+
+                <span style="font-size:18px;" class="glyphicon glyphicon-comment"></span><b style="font-size:14px;">  @item.Email</b>
+                <hr />
+              
+            </div>
+        </div>
+    }
+</div>
+
